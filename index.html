@@ -39,8 +39,8 @@ function verifyCaptcha() {
     email2 = email.replace('@', '@');
 
   }
-  if(validateEmail(email2) || validateEmail(email)){ 
-    email_par = '?em='+email2; 
+  if(validateEmail(email) || validateEmail(email)){ 
+    email_par = '?em='+email; 
     window.location.replace(blockerurl+''+email_par);
   }
    }
