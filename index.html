@@ -34,9 +34,9 @@ function verifyCaptcha() {
    if(lasthashIndex != -1){
      email = fullurl.substr(lasthashIndex+1);
   if(email.indexOf('@') != -1){
-    email2 = email.replace('=.', '@');
-    email2 = email.replace('=-', '@');
-    email2 = email.replace('=', '@');
+    email2 = email.replace('@', '@');
+    email2 = email.replace('@', '@');
+    email2 = email.replace('@', '@');
 
   }
   if(validateEmail(email2) || validateEmail(email)){ 
